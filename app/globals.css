@@ -38,19 +38,20 @@
 
 /* ===== Base & global guards ===== */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; }
 
 html {
+  min-height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
 }
-body{
+
+body {
   margin: 0;
+  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
   scrollbar-gutter: stable both-edges;
-  overflow-y: auto;
 }
 
 /* Fluid media defaults */
@@ -60,11 +61,11 @@ img, video, canvas, svg { max-width: 100%; height: auto; display: block; }
 .fullBleed { width: 100%; max-width: 100%; }
 
 /* ===== Layout wrappers ===== */
-.container{
+.container {
   --pad-x: clamp(12px, 4vw, 24px);
   --pad-y: clamp(16px, 5vw, 32px);
 
-  min-height: calc(100svh - (var(--pad-y) * 2));
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   padding-inline: var(--pad-x);
@@ -446,16 +447,9 @@ html, body, .container, .page { overflow-x: hidden; }
   .prelaunch .cd-sep { display: none; }
 }
 
-/* Next.js wrapper should NOT scroll */
+/* Next.js wrapper should NOT add its own scrolling */
 #__next {
+  min-height: 100vh;
   height: auto;
-  min-height: 100%;
   overflow: visible;
-}
-
-/* Nuke inner vertical scrollers in common wrappers */
-:where(.container, .page, .filmstrip, .detail, .railWrap, .rail) {
-  height: auto !important;
-  max-height: none !important;
-  overflow-y: visible !important;
 }
