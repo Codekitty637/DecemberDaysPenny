@@ -29,10 +29,10 @@
   {
     "id": "4",
     "title": "Where the Thoughts Go",
-    "question": "As you got older, your brain stopped being quiet. It filled with scenes, characters, lyrics and questions that didn’t fit into everyday conversation.\nSome were too sharp, some too soft, and most were too brilliant to leave floating around.\n\nToday’s chapter is about giving those thoughts a place to live.\nType JOURNAL to open the door.",
-    "answer": ["journal", "diary"],
+    "question": "As you got older, your brain stopped being quiet. It filled with scenes, characters, lyrics and questions that didn’t fit into everyday conversation.\nSome were too sharp, some too soft, and most were too brilliant to leave floating around.\n\nToday’s chapter is about giving those thoughts a place to live.\nType draw to open the door.",
+    "answer": ["draw"],
     "hint": "A notebook, but make it personal.",
-    "revealText": "Your gift is a purple leather journal with smooth ivory pages and a pocket for your favorite pen – a tiny apartment for all the stories and ideas that don’t fit anywhere else yet. 📓",
+    "revealText": "Your gift is a purple leather journal with smooth ivory pages and a pocket for your favorite pen – a tiny apartment for all the pictures, stories, and ideas that don’t fit anywhere else yet. 📓",
     "imageUrl": "/Filmstripimages/year 4.JPEG"
   },
   {
