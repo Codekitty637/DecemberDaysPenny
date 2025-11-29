@@ -69,10 +69,11 @@ img, video, canvas, svg { max-width: 100%; height: auto; display: block; }
   justify-content: center;
   padding-inline: var(--pad-x);
   padding-block: var(--pad-y);
+
+  /* Penny collage background */
   background:
-    radial-gradient(1000px 600px at 120% -10%, rgba(15,23,42,0.06) 0%, rgba(15,23,42,0) 55%),
-    radial-gradient(800px 500px at -10% -20%, rgba(214,40,40,0.10) 0%, rgba(214,40,40,0) 60%),
-    var(--bg);
+    linear-gradient(to bottom, rgba(0,0,0,0.62), rgba(0,0,0,0.86)),
+    url("/penny_collage_rotated.jpg") center center / cover fixed no-repeat;
 }
 
 /* Page content never exceeds max, auto-centers */
