@@ -39,13 +39,18 @@
 /* ===== Base & global guards ===== */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; }
-html { overflow-x: hidden; }                   /* kill sideways scroll globally */
+
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 body{
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
-  scrollbar-gutter: stable both-edges;        /* avoid 100vw overflow when scrollbar shows */
+  scrollbar-gutter: stable both-edges;
+  overflow-y: auto;
 }
 
 /* Fluid media defaults */
@@ -56,10 +61,10 @@ img, video, canvas, svg { max-width: 100%; height: auto; display: block; }
 
 /* ===== Layout wrappers ===== */
 .container{
-  /* page padding that scales with viewport */
   --pad-x: clamp(12px, 4vw, 24px);
   --pad-y: clamp(16px, 5vw, 32px);
-  min-height: 100dvh;
+
+  min-height: calc(100svh - (var(--pad-y) * 2));
   display: flex;
   justify-content: center;
   padding-inline: var(--pad-x);
@@ -73,7 +78,7 @@ img, video, canvas, svg { max-width: 100%; height: auto; display: block; }
 /* Page content never exceeds max, auto-centers */
 .page {
   width: 100%;
-  max-width: 980px;                          /* hard cap stops “growing” */
+  max-width: 980px;
   margin-inline: auto;
   display: grid;
   gap: 28px;
@@ -82,12 +87,10 @@ img, video, canvas, svg { max-width: 100%; height: auto; display: block; }
 /* Prevent stray horizontal scroll at common wrappers */
 html, body, .container, .page { overflow-x: hidden; }
 
-/* ===== Flex/Grid overflow safeties ===== */
-/* Let text wrap instead of stretching its parent in flex/grid rows */
+/* Flex/Grid overflow safeties */
 .flexRow, .gridRow { min-width: 0; }
 .flexRow > *, .gridRow > * { min-width: 0; }
 
-/* Generic utilities you can apply anywhere */
 .noScrollX { overflow-x: hidden !important; }
 .wrapText {
   overflow-wrap: anywhere;
@@ -102,7 +105,7 @@ html, body, .container, .page { overflow-x: hidden; }
   border-radius: 16px;
   padding: 28px 18px;
   margin-bottom: 18px;
-  overflow: hidden;                          /* clip any accidental spill */
+  overflow: hidden;
 }
 .progress-header {
   display: flex;
@@ -192,10 +195,6 @@ html, body, .container, .page { overflow-x: hidden; }
   letter-spacing:.2px; color: var(--navy-ink);
 }
 .banner-sub{ margin:0; color: var(--muted); }
-@media (max-width: 600px) {
-  .banner-header { gap: 10px; }
-  .banner .rule { width: 80px; }
-}
 
 /* ===== Hero (video + text) ===== */
 .hero{
@@ -220,7 +219,7 @@ html, body, .container, .page { overflow-x: hidden; }
 }
 .hero-body{ margin:0; color: var(--muted); line-height:1.65; }
 
-/* Gold accent rule -> now Penny red accent */
+/* Accent rule */
 .rule{
   height:1px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
@@ -295,7 +294,7 @@ html, body, .container, .page { overflow-x: hidden; }
 /* Footer */
 .footer{ margin-top:18px; color: var(--muted); font-size: 14px; text-align:center; }
 
-/* ===== Legacy Map Rail (safe to keep) ===== */
+/* ===== Legacy Map Rail ===== */
 .map-rail { display: grid; gap: 18px; margin-top: 8px; position: relative; }
 .node { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; }
 .node-pin {
@@ -310,7 +309,6 @@ html, body, .container, .page { overflow-x: hidden; }
 .node-card { background: #ffffff; border: 1px solid var(--line); border-radius: 12px; padding: 16px; width: 100%; }
 .node-active .node-pin { background: var(--navy); }
 .node-done .node-pin   { background: var(--gold); }
-@media (max-width: 520px) { .node { grid-template-columns: 18px 1fr; } }
 
 /* ===== Countdown (shared) ===== */
 .cd-wrap { display:grid; gap:.75rem; justify-items:center; }
@@ -329,11 +327,15 @@ html, body, .container, .page { overflow-x: hidden; }
 .countdown-sub { font-size:.875rem; color: var(--muted); }
 
 /* Compact variant (under the progress bar) */
-.cd-compact .cd-value { min-width:56px; padding:.4rem .6rem; font-size:clamp(16px,2.4vw,22px); }
+.cd-compact .cd-value {
+  min-width:56px;
+  padding:.4rem .6rem;
+  font-size:clamp(16px,2.4vw,22px);
+}
 .cd-compact .cd-label { font-size:.7rem; }
 .cd-compact .cd-sep { font-size:1rem; }
 
-/* ===== Prelaunch theming & mobile fixes ===== */
+/* ===== Prelaunch theming ===== */
 .prelaunch { text-align: center; }
 .prelaunch .countdown-title.themed {
   font-family: var(--font-serif);
@@ -348,7 +350,11 @@ html, body, .container, .page { overflow-x: hidden; }
 .prelaunch .cd-label { color: var(--navy); font-weight: 600; }
 .prelaunch .cd-sep   { color: var(--gold); opacity: 1; }
 
-.prelaunch .panel { background: #ffffff; border: 1px solid var(--line); border-radius: 16px; }
+.prelaunch .panel {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
 .prelaunch .countdown.full {
   background: linear-gradient(180deg, #fffef9, #ffffff);
   border: 1px solid var(--gold-deep);
@@ -365,26 +371,7 @@ html, body, .container, .page { overflow-x: hidden; }
   height: auto;
 }
 
-/* ===== Layout wrappers (override with scroll fix) ===== */
-.container{
-  --pad-x: clamp(12px, 4vw, 24px);
-  --pad-y: clamp(16px, 5vw, 32px);
-
-  /* KEY FIX: avoid double scroll by subtracting vertical padding */
-  min-height: calc(100svh - (var(--pad-y) * 2));
-
-  display: flex;
-  justify-content: center;
-  padding-inline: var(--pad-x);
-  padding-block: var(--pad-y);
-  background:
-    radial-gradient(1000px 600px at 120% -10%, rgba(15,23,42,0.06) 0%, rgba(15,23,42,0) 55%),
-    radial-gradient(800px 500px at -10% -20%, rgba(214,40,40,0.10) 0%, rgba(214,40,40,0) 60%),
-    var(--bg);
-}
-
-
-/* ========= Post-launch responsive helpers ========= */
+/* ========= Responsive helpers ========= */
 @media (max-width: 520px) {
   .banner-inner { padding: 16px; }
   .hero { padding: 14px; gap: 14px; }
@@ -405,4 +392,69 @@ html, body, .container, .page { overflow-x: hidden; }
 }
 
 /* Progress header can wrap without pushing layout */
-@
+@media (max-width: 420px) {
+  .progress-header { flex-wrap: wrap; row-gap: 6px; }
+}
+
+/* Progress marks: smaller badges + tighter inset on tiny screens */
+@media (max-width: 420px) {
+  .progress-marks { left: 8px; right: 8px; }
+  .progress .mark { width: 28px; height: 28px; }
+  .progress .mark.mark-last { width: 32px; height: 32px; }
+}
+
+/* Compact countdown under the progress bar: scale down a touch */
+@media (max-width: 420px) {
+  .cd-compact .cd-value {
+    min-width: 52px;
+    padding: .35rem .5rem;
+    font-size: clamp(15px, 3.5vw, 20px);
+  }
+  .cd-compact .cd-label { font-size: .66rem; }
+  .cd-compact .cd-sep { font-size: .9rem; }
+}
+
+/* Hero video: keep visible without side scroll */
+@media (max-width: 520px) {
+  .hero-video { height: clamp(180px, 48vw, 46vh); }
+}
+
+/* General: ensure long words/links don’t cause overflow */
+.banner-title,
+.banner-sub,
+.hero-body,
+.subtitle {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Trim box size/spacing further on very small widths */
+@media (max-width: 420px) {
+  .prelaunch .cd-value {
+    min-width: 56px;
+    padding: 10px 12px;
+    font-size: clamp(20px, 6.2vw, 28px);
+  }
+  .prelaunch .cd-unit { min-width: auto; }
+  .cd-row { gap: .35rem; }
+  .cd-sep { font-size: 1rem; }
+}
+
+/* Ultra small: hide separators if needed */
+@media (max-width: 360px) {
+  .prelaunch .cd-sep { display: none; }
+}
+
+/* Next.js wrapper should NOT scroll */
+#__next {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+}
+
+/* Nuke inner vertical scrollers in common wrappers */
+:where(.container, .page, .filmstrip, .detail, .railWrap, .rail) {
+  height: auto !important;
+  max-height: none !important;
+  overflow-y: visible !important;
+}
