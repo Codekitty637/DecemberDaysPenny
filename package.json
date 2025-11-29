@@ -1,0 +1,29 @@
+{
+  "name": "15-days-of-keenan",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/kv": "^3.0.0",
+    "@vercel/speed-insights": "^1.2.0",
+    "canvas-confetti": "^1.9.3",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.24",
+    "ioredis": "^5.8.1",
+    "next": "14.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "resend": "2.0.0"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^24.7.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "typescript": "5.6.3"
+  }
+}

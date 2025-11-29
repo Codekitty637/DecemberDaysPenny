@@ -1,0 +1,137 @@
+[
+  {
+    "id": "1",
+    "title": "Provisions",
+    "question": "The first day of Keenan!\nBefore your quest, you'll need provisions.\nOne of your favorites—it's delicious,\ncrunchy, sweet, and round—\njust type the letter of pleasure's sound.",
+    "answer": ["ohs", "os", "o's", "oh's", "snackbox"],
+    "hint": "Cereal nostalgia. Round and sweet.",
+    "revealText": "Snacks that are Oh so satisfying are coming your way! 🍫",
+    "imageUrl": "/Filmstripimages/snacks.PNG"
+  },
+  {
+    "id": "2",
+    "title": "Our Eras",
+    "question": "We’ve had our eras — late nights at work, pool days, pie days, concerts, and soccer nights.\nEvery moment its own riff, each one hitting like déjà vu with a __________ playlist for you.\nYou’ve sent me more of their songs than anyone — enter their name to unlock our musical memories.",
+    "answer": ["brand new", "new", "brandnew", "brand"],
+    "hint": "The boy who blocked his own shot",
+    "revealText": "Relive our eras with this concert of the music we’ve shared. 🎶 <a href='https://www.youtube.com/playlist?list=PLUCwbkilzxzjGCJJe366gpCP-lcSohhFl&si=8sheJZkvKKbMVCne' target='_blank' rel='noopener noreferrer'>Listen here</a>",
+    "imageUrl": "/Filmstripimages/shoes.png"
+  },
+  {
+    "id": "3",
+    "title": "Picture Perfect",
+    "question": "I love to tempt you—whether I’m close enough to touch or \nsending something you can enjoy at your leisure.\nI’ll be away, but not truly gone. \nName where I’ll be laying my head, \nand you’ll sleep well after you see new visions of me.",
+    "answer": ["hotel teatro", "teatro"],
+    "hint": "Boutique hotel in Denver’s theater district.",
+    "revealText": "Good eye—keep them peeled for what I’m about to reveal!",
+    "imageUrl": "/Filmstripimages/specialpic.png"
+  },
+  {
+    "id": "4",
+    "title": "Feed What's Within",
+    "question": "Every quest needs gear and provisions, it’s true,\nbut not all hunger’s the kind you chew.\nMaps can guide and stars can spin,\nbut your sense of direction lies within.\nFeed the treasure inside your chest —\nlet these words be your moment of rest.\nA compass unseen will see you through,\nas you journey on — I’m here with you.",
+    "answer": ["heart"],
+    "hint": "The truest treasure is the one that beats.",
+    "revealText": "Journey with purpose. Press play and listen closely. ❤️",
+    "imageUrl": "/Filmstripimages/heart.png"
+  },
+  {
+    "id": "5",
+    "title": "A Toast",
+    "question": "The road brings me home and back to you,\nsidelined once more with this golden brew.\nIt’s not Chaucer’s, but it’s said to be delicious—\nso let’s raise our glasses (and share some kisses),\nwhile you toast with...",
+    "answer": ["mead"],
+    "hint": "Honey wine.",
+    "revealText": "It’s MEad! Get it? 😄",
+    "imageUrl": "/Filmstripimages/toast.png"
+  },
+  {
+    "id": "6",
+    "title": "Midday Legend",
+    "question": "Your next gift arrives at midday—a clue to what’s coming your way.\nThe week’s been long, the halls too still; heroes shouldn’t dine alone.\nSay the state you’ll be in once you’ve savored your favorite fare.",
+    "answer": ["fatburger friday", "fatburger", "full", "fat"],
+    "hint": "Off campus lunch tradition + a famous burger chain.",
+    "revealText": "Fatburger Friends!",
+    "imageUrl": "/Filmstripimages/fatburger.png"
+  },
+  {
+    "id": "7",
+    "title": "Rear gear",
+    "question": "Every traveler needs his gear renewed—something fitted, sturdy, and true.\nWhen I can’t be the one to hold you tight, these will hug your butt just right.\nSay the number sewn in the seams.",
+    "answer": ["seven", "sevens", "7s", "7", "seven jeans", "jeans"],
+    "hint": "Prime number, today's brand.",
+    "revealText": "Muah!",
+    "imageUrl": "/Filmstripimages/gear.png"
+  },
+{
+  "id": "8",
+  "title": "Fluffy Scales",
+  "question": "Not scales nor steel, yet armor still—\na noble crest that bends to will.\nGuard of jaw, in night or light,\ntamed with oils to keep it right.\nLegends whisper your name in flame,\na clue concealed within your claim.",
+  "answer": ["dragon whiskers", "dragonwhiskers"],
+  "hint": "Your legendary alias",
+  "revealText": "Even legends need a little taming. Your beard deserves the same care as a dragon’s pride. 🐉✨",
+  "imageUrl": "/Filmstripimages/beard.png"
+},
+  {
+    "id": "9",
+    "title": "Expedition 42",
+    "question": "Your gear’s renewed, your compass true—lead the way, the path continues.\nWith brush in hand and courage carried, steady stance—ready to parry.\nSpeak this mantra as you complete this chapter...",
+    "answer": ["for those who come after", "expedition 33"],
+    "hint": "A mantra tied to a certain expedition.",
+    "revealText": "I made you something for your expedition.",
+    "imageUrl": "/Filmstripimages/expedition33.png"
+  },
+  {
+    "id": "10",
+    "title": "Fuel the Quest",
+    "question": "Not grounds, but ground rules. \nTo fuel the journey, trade sip for vow— \nan origin oath, three weights that balance the path, \nold words that leave the world a little more radiant.",
+    "answer": ["Life before death, strength before weakness, journey before destination", "Life before death strength before weakness journey before destination", "coffee"],
+    "hint": "It's the first oath; each line says ___before___.",
+    "revealText": "These words are accepted!",
+    "imageUrl": "/Filmstripimages/coffee.png"
+  },
+  {
+    "id": "11",
+    "title": "Majestic Plans",
+    "question": "The road’s been long, your wit kept keen; tomorrow evening awaits a scene.\nDress the part, bring laughs to spare—our seats await at a majestic fair.\nNo riddle now, just joy and zest-\na nice night full of __________ .",
+    "answer": ["laughter", "laughs", "comedy", "jest"],
+    "hint": "Stand-up at a historic theater.",
+    "revealText": "John Mulaney!",
+    "imageUrl": "/Filmstripimages/majestic.png"
+  },
+  {
+    "id": "12",
+    "title": "Under Her Glow",
+    "question": "Once before we dined beneath her glow—where basil met the melt of cheese.\nFollow the light where memories stir: a rooftop waits, and so does she.",
+    "answer": ["moon daughter", "moons daughter"],
+    "hint": "Rooftop spot with a lunar name.",
+    "revealText": "Come hungry!",
+    "imageUrl": "/Filmstripimages/moondaughter.png"
+  },
+  {
+    "id": "13",
+    "title": "Gifted Expressions",
+    "question": "I send these out instead of prose,\nThey roll their eyes or scrunch their nose.\nA little gift, a looping cue—\nMy favorite faces made for you.",
+    "answer": ["gif", "gifs", "memojis", "stickers"],
+    "hint": "It’s animated affection.",
+    "revealText": "A gif(t) from me 💌",
+    "imageUrl": "/Filmstripimages/gif.png"
+  },
+  {
+  "id": "14",
+  "title": "Kitchen Quests",
+  "question": "No gold to spend, no beast to fight,\njust something warm to end your night.\nA quest for comfort, tasty and clever—\nguess the gift that brings us to the table together.",
+  "answer": ["dinner", "a dinner", "cook dinner", "make dinner"],
+  "hint": "It ends your day.",
+  "revealText": "You've unlocked Kitchen Quest coupons: dinner, a cooking lesson, a recipe drop, and famous sweet potato burritos. 🍽️",
+  "imageUrl": "/Filmstripimages/coupon.png"
+},
+  {
+    "id": "15",
+    "title": "Finale (Laugh Mission)",
+    "question": "Fifteen days, one final quest—\nto check a dream from your bucket list.\nA master of laughs, your comic king,\n“Boxen” was his famous thing.\nGuess his name—it’s showtime soon!",
+    "answer": ["brian regan", "boxen"],
+    "hint": "Clean comedy, clever chaos, ‘Boxen!’",
+    "revealText": "Brian Regan—live! 🎉",
+    "imageUrl": "/Filmstripimages/Tickets.png"
+  }
+]
