@@ -16,7 +16,7 @@ async function fireConfettiBurst() {
       gravity: 0.8,
       ticks: 220,
       scalar: 0.9,
-      colors: ['#caa557', '#0f172a', '#ffffff'],
+      colors: ['#D62828', '#FF3B30', '#F5426C', '#0D0D0D', '#FFFFFF'],
     });
   } catch {}
 }
@@ -29,11 +29,19 @@ async function firePennyDayshow() {
       gravity: 0.9,
       ticks: 240,
       scalar: 1.0,
-      colors: ['#caa557', '#0f172a', '#ffffff'],
+      colors: ['#D62828', '#FF3B30', '#F5426C', '#0D0D0D', '#FFFFFF'],
     };
     m.default({ ...base, origin: { x: 0.18, y: 0.4 } });
     m.default({ ...base, origin: { x: 0.82, y: 0.4 } });
-    setTimeout(() => m.default({ ...base, particleCount: 220, origin: { y: 0.6 } }), 300);
+    setTimeout(
+      () =>
+        m.default({
+          ...base,
+          particleCount: 220,
+          origin: { y: 0.6 },
+        }),
+      300
+    );
   } catch {}
 }
 function useMounted() {
@@ -74,7 +82,7 @@ function PrelaunchCountdownBoxes({
   target,
   nowMs,  // base test time from ?now=
   title = '13 Days of Penny begins in',
-  subtitle = 'November 1 — 12:00 AM (your time)',
+  subtitle = 'December 1 — 12:00 AM (your time)',
 }: {
   target: Date;
   nowMs?: number;
@@ -179,13 +187,13 @@ export default function Page() {
     todayIndex   = Math.min(fsPuzzles.length - 1, elapsedDays);
   }
 
-  // NEW — broadcast the unified active index so the filmstrip/tiles can follow the gold cursor.
+  // broadcast the unified active index so the filmstrip/tiles can follow the cursor
   useEffect(() => {
     // note: harmless no-op if nobody listens
     window.dispatchEvent(new CustomEvent('PennyDays:active-index', { detail: { index: todayIndex } }));
   }, [todayIndex]);
 
-  // gold fill based on day position (not solves): 0% at day 1 start, 100% at day 13 start
+  // fill based on day position (not solves): 0% at day 1 start, 100% at day 13 start
   const dayFillPct =
     fsPuzzles.length > 1
       ? Math.max(0, Math.min(100, ((unlockedDays - 1) / (fsPuzzles.length - 1)) * 100))
@@ -257,7 +265,7 @@ export default function Page() {
                 <div className="banner-text">
                   <h1 className="banner-title">13 Days of Penny</h1>
                   <div className="rule" />
-                  <p className="banner-sub">A playful, luxury-coded quest of clues &amp; surprises</p>
+                  <p className="banner-sub">A dark-cute anime quest of clues &amp; surprises</p>
                 </div>
               </div>
             </div>
@@ -266,7 +274,7 @@ export default function Page() {
           {/* Progress */}
           <section className="progress">
             <div className="progress-header">
-              <span>K-Day Quest</span>
+              <span>Penny Days Progress</span>
               <span>{progressPct}%</span>
             </div>
 
@@ -278,7 +286,7 @@ export default function Page() {
                   const iconSrc = isLast ? '/milestones/kday.png' : `/milestones/m${i + 1}.png`;
                   const leftPct = fsPuzzles.length > 1 ? (i / (fsPuzzles.length - 1)) * 100 : 0;
 
-                  // time-based state: unlocked < today (glow) < locked
+                  // time-based state: unlocked < current (glow) < locked
                   const stateClass =
                     todayIndex < 0   ? 'mark-locked'   :
                     i < todayIndex   ? 'mark-unlocked' :
@@ -290,7 +298,7 @@ export default function Page() {
                       key={p.id}
                       className={`mark ${stateClass} ${isLast ? 'mark-last' : ''}`}
                       style={{ left: `${leftPct}%` }}
-                      title={isLast ? 'K-Day!' : `Milestone ${i + 1}`}
+                      title={isLast ? 'Final Day!' : `Milestone ${i + 1}`}
                     >
                       <img src={iconSrc} alt="" />
                     </div>
@@ -345,7 +353,7 @@ export default function Page() {
               /* No prop changes here; we broadcast active day via PennyDays:active-index */
             />
             <div className="footer" style={{ marginTop: 12 }}>
-              Made with ❤️ by 💎❤️
+              Made with ❤️ by Mom
             </div>
           </section>
         </div>
