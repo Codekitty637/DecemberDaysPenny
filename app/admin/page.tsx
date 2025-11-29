@@ -35,7 +35,11 @@ async function loadProgress(playerId: string): Promise<Row[]> {
 
 function fmtTs(ts: number) {
   if (!ts) return '—';
-  try { return new Date(ts).toLocaleString(); } catch { return String(ts); }
+  try {
+    return new Date(ts).toLocaleString();
+  } catch {
+    return String(ts);
+  }
 }
 
 export default async function AdminPage({
@@ -50,59 +54,116 @@ export default async function AdminPage({
 
   const rows = await loadProgress(playerId);
 
-  const S: Record<string, React.CSSProperties> = {
-    page: { maxWidth: 980, margin: '24px auto', padding: 16, fontFamily: 'ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial' },
-    h1: { margin: 0, fontSize: 24 },
-    sub: { margin: '4px 0 16px', color: '#475569' },
-    table: { width: '100%', borderCollapse: 'collapse', fontSize: 14, background: '#fff' },
-    th: { textAlign: 'left', borderBottom: '1px solid #e5e7eb', padding: '8px 6px', background: '#f8fafc' },
-    td: { borderBottom: '1px solid #f1f5f9', padding: '8px 6px' },
-    badge: { display: 'inline-block', padding: '2px 8px', borderRadius: 999, background: '#ecfeff', border: '1px solid #a5f3fc', fontSize: 12 },
-    foot: { marginTop: 12, color: '#64748b' },
+  const tableTh: React.CSSProperties = {
+    textAlign: 'left',
+    borderBottom: '1px solid #e5e7eb',
+    padding: '8px 6px',
+    background: '#f8fafc',
+    fontWeight: 600,
+    fontSize: 13,
+    color: '#111827',
+  };
+
+  const tableTd: React.CSSProperties = {
+    borderBottom: '1px solid #f1f5f9',
+    padding: '8px 6px',
+    fontSize: 13,
+    color: '#111827',
+  };
+
+  const statusBadge: React.CSSProperties = {
+    display: 'inline-block',
+    padding: '2px 8px',
+    borderRadius: 999,
+    background: '#ecfeff',
+    border: '1px solid #a5f3fc',
+    fontSize: 12,
+    textTransform: 'capitalize',
   };
 
   return (
-    <main style={S.page}>
-      <h1 style={S.h1}>Admin · Player: {playerId}</h1>
-      <p style={S.sub}>
-        {rows.length} solved {rows.length ? `· last at ${fmtTs(rows[rows.length - 1]?.ts)}` : ''}
-      </p>
+    <div className="container">
+      <div className="page">
+        {/* Banner / header */}
+        <section className="banner">
+          <div className="banner-inner">
+            <div className="banner-header">
+              <img
+                src="/logo.png"
+                alt="13 Days of Penny logo"
+                className="banner-logo"
+              />
+              <div className="banner-text">
+                <h1 className="banner-title">Admin · {playerId}</h1>
+                <div className="rule" />
+                <p className="banner-sub">
+                  {rows.length} solved
+                  {rows.length
+                    ? ` · last at ${fmtTs(rows[rows.length - 1]?.ts)}`
+                    : ' · no solves yet'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      {/* Client-side controls */}
-      <AdminControls playerId={playerId} />
+        {/* Controls panel */}
+        <section className="panel">
+          <p className="subtitle">Player Controls</p>
+          <AdminControls playerId={playerId} />
+          <p style={{ marginTop: 8, fontSize: 13, color: '#6b7280' }}>
+            Tip: raw JSON at <code>/api/progress?player={playerId}</code>
+          </p>
+        </section>
 
-      <table style={S.table}>
-        <thead>
-          <tr>
-            <th style={S.th}>Day</th>
-            <th style={S.th}>Puzzle</th>
-            <th style={S.th}>Answer</th>
-            <th style={S.th}>When</th>
-            <th style={S.th}>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.length === 0 ? (
-            <tr><td style={S.td} colSpan={5}>No solves yet.</td></tr>
-          ) : (
-            rows.map((r) => (
-              <tr key={r.puzzleId}>
-                <td style={S.td}>{r.meta?.day ?? '—'}</td>
-                <td style={S.td}>{r.meta?.title ?? r.puzzleId}</td>
-                <td style={S.td}>{r.answer}</td>
-                <td style={S.td}>{fmtTs(r.ts)}</td>
-                <td style={S.td}>
-                  <span style={S.badge}>{r.correct ? 'correct' : 'pending'}</span>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+        {/* Progress table panel */}
+        <section className="panel">
+          <p className="subtitle">Progress Log</p>
 
-      <p style={S.foot}>
-        Tip: raw JSON at <code>/api/progress?player={playerId}</code>
-      </p>
-    </main>
+          <div style={{ overflowX: 'auto' }}>
+            <table
+              style={{
+                width: '100%',
+                borderCollapse: 'collapse',
+                background: '#ffffff',
+              }}
+            >
+              <thead>
+                <tr>
+                  <th style={tableTh}>Day</th>
+                  <th style={tableTh}>Puzzle</th>
+                  <th style={tableTh}>Answer</th>
+                  <th style={tableTh}>When</th>
+                  <th style={tableTh}>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.length === 0 ? (
+                  <tr>
+                    <td style={tableTd} colSpan={5}>
+                      No solves yet for this player.
+                    </td>
+                  </tr>
+                ) : (
+                  rows.map((r) => (
+                    <tr key={`${r.puzzleId}-${r.ts}`}>
+                      <td style={tableTd}>{r.meta?.day ?? '—'}</td>
+                      <td style={tableTd}>{r.meta?.title ?? r.puzzleId}</td>
+                      <td style={tableTd}>{r.answer}</td>
+                      <td style={tableTd}>{fmtTs(r.ts)}</td>
+                      <td style={tableTd}>
+                        <span style={statusBadge}>
+                          {r.correct ? 'correct' : 'pending'}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 }
