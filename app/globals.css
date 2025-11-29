@@ -1,4 +1,5 @@
 :root {
+  /* Penny theme colors */
   --penny-red-light: #FF3B30;
   --penny-red-mid: #D62828;
   --penny-red-dark: #A01012;
@@ -13,11 +14,11 @@
   --penny-ember: #FF6A3D;
 
   --penny-white: #FFFFFF;
-}
 
-  /* Typography */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  --font-serif: Georgia, 'Times New Roman', serif;
+  /* existing font tokens */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-serif: Georgia, "Times New Roman", serif;
 }
 
 /* ===== Base & global guards ===== */
