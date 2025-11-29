@@ -7,7 +7,7 @@ function cx(...parts: Array<string | false | null | undefined>) {
 type ProgressState = "locked" | "unlocked" | "current";
 
 export type DayKey =
-  | 1|2|3|4|5|6|7|8|9|10|11|12|13|14|15;
+  | 1|2|3|4|5|6|7|8|9|10|11|12|13;
 
 export interface ProgressIconProps {
   day: DayKey;
@@ -126,22 +126,7 @@ function Glyph({day}:{day: DayKey}) {
           <circle cx="34" cy="22" r="1.5" fill={stroke}/>
         </>
       );
-    case 14:
-      return (
-        <>
-          <path d="M18 38h28v6H18a6 6 0 0 1-6-6v-2c4 0 7 1 10 2l6 0" fill="none" stroke={stroke} strokeWidth={sw}/>
-          <path d="M44 22l2 3 3 1-3 1-2 3-1-3-3-1 3-1z" fill="none" stroke={stroke} strokeWidth={sw}/>
-        </>
-      );
-    case 15:
-      return (
-        <>
-          <path d="M18 24h28v16h-6a4 4 0 0 1-8 0h-0a4 4 0 0 1-8 0h-6z"
-            fill="none" stroke={stroke} strokeWidth={sw}/>
-          <path d="M36 26v12" stroke={stroke} strokeWidth={sw} strokeDasharray="3 3"/>
-        </>
-      );
-  }
+      }
 }
 
 export default function ProgressIcon({

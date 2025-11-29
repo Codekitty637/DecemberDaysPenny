@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-serif' });
 
 export const metadata = {
-  title: 'Kdays',
-  description: '15 Days of Keenan',
+  title: 'PennyDays',
+  description: '13 Days of Penny',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

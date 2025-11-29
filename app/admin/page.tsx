@@ -46,7 +46,7 @@ export default async function AdminPage({
   const playerId =
     typeof searchParams?.player === 'string' && searchParams.player.trim()
       ? searchParams.player.trim()
-      : 'keenan';
+      : 'Penny';
 
   const rows = await loadProgress(playerId);
 

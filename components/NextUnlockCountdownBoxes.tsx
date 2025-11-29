@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type Props = {
-  launchLocal: string;  // e.g. "2025-11-01T00:00:00" (local)
-  totalDays: number;    // e.g. 15
+  launchLocal: string;  // e.g. "2025-12-01T00:00:00" (local)
+  totalDays: number;    // e.g. 13
   unlockHour?: number;  // 0..23, defaults 0
   nowMs?: number;       // optional base "now" from ?now=
   className?: string;   // e.g. "cd-compact"

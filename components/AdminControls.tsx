@@ -44,7 +44,7 @@ export default function AdminControls({ playerId }: { playerId: string }) {
             });
             const json = await res.json();
             alert(JSON.stringify(json, null, 2));
-            try { localStorage.removeItem('kdays-progress'); } catch {}
+            try { localStorage.removeItem('PennyDays-progress'); } catch {}
             window.location.href = `/admin?player=${encodeURIComponent(playerId)}&t=${Date.now()}`;
           } catch (e) {
             alert('Failed: ' + String(e));

@@ -6,9 +6,9 @@ export async function notifySolved(puzzleId: string, userAnswer: string) {
   const to = process.env.NOTIFY_EMAIL!;
   if (!to) return;
   await resend.emails.send({
-    from: 'Keenan Quest <notifications@yourdomain.com>', // or a resend domain
+    from: 'Penny Quest <notifications@yourdomain.com>', // or a resend domain
     to,
-    subject: `✅ Keenan solved puzzle ${puzzleId}`,
+    subject: `✅ Penny solved puzzle ${puzzleId}`,
     text: `Puzzle ${puzzleId} solved with answer: "${userAnswer}" at ${new Date().toLocaleString()}`
   });
 }

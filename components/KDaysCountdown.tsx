@@ -5,7 +5,7 @@ import React, { useMemo, useRef, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 type Props = {
-  /** Local launch date-time string, e.g. "2025-11-01T00:00:00" (treated as local time) */
+  /** Local launch date-time string, e.g. "2025-12-01T00:00:00" (treated as local time) */
   launchLocal: string;
   /** Total number of unlock days (default 15) */
   totalDays?: number;
@@ -66,9 +66,9 @@ function useTestingNow() {
   return baseOverride + elapsed;
 }
 
-export default function KDaysCountdown({
+export default function PennyDaysCountdown({
   launchLocal,
-  totalDays = 15,
+  totalDays = 13,
   unlockHour = 0,
   className,
   labelBefore = "Starts in",

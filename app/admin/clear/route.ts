@@ -30,7 +30,7 @@ async function scanKeys(redis: any, pattern: string): Promise<string[]> {
 export async function GET(req: NextRequest) {
   const check = auth(req);
   if (!check.ok) return Response.json(check, { status: check.status });
-  const player = req.nextUrl.searchParams.get('player') || 'keenan';
+  const player = req.nextUrl.searchParams.get('player') || 'Penny';
 
   const redis = await getRedisReady();
   const setKey = `progress:${player}:set`;
@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const check = auth(req);
   if (!check.ok) return Response.json(check, { status: check.status });
-  const player = req.nextUrl.searchParams.get('player') || 'keenan';
+  const player = req.nextUrl.searchParams.get('player') || 'Penny';
 
   const redis = await getRedisReady();
   const setKey = `progress:${player}:set`;

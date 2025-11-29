@@ -2,7 +2,7 @@
   {
     "id": "1",
     "title": "Provisions",
-    "question": "The first day of Keenan!\nBefore your quest, you'll need provisions.\nOne of your favorites—it's delicious,\ncrunchy, sweet, and round—\njust type the letter of pleasure's sound.",
+    "question": "The first day of Penny!\nBefore your quest, you'll need provisions.\nOne of your favorites—it's delicious,\ncrunchy, sweet, and round—\njust type the letter of pleasure's sound.",
     "answer": ["ohs", "os", "o's", "oh's", "snackbox"],
     "hint": "Cereal nostalgia. Round and sweet.",
     "revealText": "Snacks that are Oh so satisfying are coming your way! 🍫",
@@ -115,23 +115,5 @@
     "hint": "It’s animated affection.",
     "revealText": "A gif(t) from me 💌",
     "imageUrl": "/Filmstripimages/gif.png"
-  },
-  {
-  "id": "14",
-  "title": "Kitchen Quests",
-  "question": "No gold to spend, no beast to fight,\njust something warm to end your night.\nA quest for comfort, tasty and clever—\nguess the gift that brings us to the table together.",
-  "answer": ["dinner", "a dinner", "cook dinner", "make dinner"],
-  "hint": "It ends your day.",
-  "revealText": "You've unlocked Kitchen Quest coupons: dinner, a cooking lesson, a recipe drop, and famous sweet potato burritos. 🍽️",
-  "imageUrl": "/Filmstripimages/coupon.png"
-},
-  {
-    "id": "15",
-    "title": "Finale (Laugh Mission)",
-    "question": "Fifteen days, one final quest—\nto check a dream from your bucket list.\nA master of laughs, your comic king,\n“Boxen” was his famous thing.\nGuess his name—it’s showtime soon!",
-    "answer": ["brian regan", "boxen"],
-    "hint": "Clean comedy, clever chaos, ‘Boxen!’",
-    "revealText": "Brian Regan—live! 🎉",
-    "imageUrl": "/Filmstripimages/Tickets.png"
   }
 ]

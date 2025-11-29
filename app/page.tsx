@@ -20,7 +20,7 @@ async function fireConfettiBurst() {
     });
   } catch {}
 }
-async function fireKDayShow() {
+async function firePennyDayshow() {
   try {
     const m = await import('canvas-confetti');
     const base = {
@@ -43,8 +43,8 @@ function useMounted() {
 }
 
 /* ========= Dates / helpers ========= */
-const LAUNCH_DATE = new Date('2025-11-01T00:00:00');
-const BDAY_DATE   = new Date('2025-11-16T00:00:00');
+const LAUNCH_DATE = new Date('2025-12-01T00:00:00');
+const BDAY_DATE   = new Date('2025-12-13T00:00:00');
 
 function getNowMs(): number {
   try {
@@ -73,7 +73,7 @@ const pad2 = (v: number) => String(v).padStart(2, '0');
 function PrelaunchCountdownBoxes({
   target,
   nowMs,  // base test time from ?now=
-  title = '15 days of Keenan begins in',
+  title = '13 Days of Penny begins in',
   subtitle = 'November 1 — 12:00 AM (your time)',
 }: {
   target: Date;
@@ -167,7 +167,7 @@ export default function Page() {
 
   // compute time-based day progression
   const DAY_MS = 24 * 60 * 60 * 1000;
-  const start = new Date('2025-11-01T00:00:00'); // local unlock hour = 0
+  const start = new Date('2025-12-01T00:00:00'); // local unlock hour = 0
   start.setHours(0, 0, 0, 0);
   const baseStartMs = start.getTime();
 
@@ -182,10 +182,10 @@ export default function Page() {
   // NEW — broadcast the unified active index so the filmstrip/tiles can follow the gold cursor.
   useEffect(() => {
     // note: harmless no-op if nobody listens
-    window.dispatchEvent(new CustomEvent('kdays:active-index', { detail: { index: todayIndex } }));
+    window.dispatchEvent(new CustomEvent('PennyDays:active-index', { detail: { index: todayIndex } }));
   }, [todayIndex]);
 
-  // gold fill based on day position (not solves): 0% at day 1 start, 100% at day 15 start
+  // gold fill based on day position (not solves): 0% at day 1 start, 100% at day 13 start
   const dayFillPct =
     fsPuzzles.length > 1
       ? Math.max(0, Math.min(100, ((unlockedDays - 1) / (fsPuzzles.length - 1)) * 100))
@@ -198,7 +198,7 @@ export default function Page() {
     if (currentMs >= LAUNCH_DATE.getTime()) {
       const k = 'seen_launch_celebration';
       if (!localStorage.getItem(k)) {
-        fireKDayShow();
+        firePennyDayshow();
         localStorage.setItem(k, '1');
       }
     }
@@ -207,7 +207,7 @@ export default function Page() {
     if (currentMs >= BDAY_DATE.getTime()) {
       const k = 'seen_bday_celebration';
       if (!localStorage.getItem(k)) {
-        fireKDayShow();
+        firePennyDayshow();
         localStorage.setItem(k, '1');
       }
     }
@@ -220,7 +220,7 @@ export default function Page() {
 
   useEffect(() => {
     if (progressPct === 100 && fsPuzzles.length > 0) {
-      fireKDayShow();
+      firePennyDayshow();
     }
   }, [progressPct, fsPuzzles.length]);
 
@@ -240,7 +240,7 @@ export default function Page() {
           />
           <img
             src="/logo.png?v=2"
-            alt="15 Days of Keenan logo"
+            alt="13 Days of Penny logo"
             className="prelaunch-logo"
             width={600}
             height={600}
@@ -253,9 +253,9 @@ export default function Page() {
           <section className="banner">
             <div className="banner-inner">
               <div className="banner-header">
-                <img src="/logo.png" alt="15 Days of Keenan logo" className="banner-logo" />
+                <img src="/logo.png" alt="13 Days of Penny logo" className="banner-logo" />
                 <div className="banner-text">
-                  <h1 className="banner-title">15 Days of Keenan</h1>
+                  <h1 className="banner-title">13 Days of Penny</h1>
                   <div className="rule" />
                   <p className="banner-sub">A playful, luxury-coded quest of clues &amp; surprises</p>
                 </div>
@@ -301,7 +301,7 @@ export default function Page() {
 
             {/* Boxed compact countdown under the meter */}
             <NextUnlockCountdownBoxes
-              launchLocal="2025-11-01T00:00:00"
+              launchLocal="2025-12-01T00:00:00"
               totalDays={fsPuzzles.length}
               unlockHour={0}
               nowMs={hasNowParam ? nowMs : undefined}
@@ -337,12 +337,12 @@ export default function Page() {
               }}
               onMilestone={({ completedCount }) => {
                 fireConfettiBurst();
-                if (completedCount === fsPuzzles.length) fireKDayShow();
+                if (completedCount === fsPuzzles.length) firePennyDayshow();
               }}
               onProgressChange={(n) => setDoneCount(n)}
               launchAtMs={LAUNCH_DATE.getTime()}
               nowMs={hasNowParam ? nowMs : undefined}
-              /* No prop changes here; we broadcast active day via kdays:active-index */
+              /* No prop changes here; we broadcast active day via PennyDays:active-index */
             />
             <div className="footer" style={{ marginTop: 12 }}>
               Made with ❤️ by 💎❤️

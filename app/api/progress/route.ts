@@ -11,10 +11,10 @@ type SolvePayload = {
   meta?: Record<string, any>;
 };
 
-// List progress: GET /api/progress?player=keenan
+// List progress: GET /api/progress?player=Penny
 export async function GET(req: NextRequest) {
   try {
-    const playerId = req.nextUrl.searchParams.get('player') || 'keenan';
+    const playerId = req.nextUrl.searchParams.get('player') || 'Penny';
     const redis = await getRedisReady();
 
     const keys = await redis.smembers(`progress:${playerId}:set`);

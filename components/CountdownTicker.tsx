@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 type Props = {
-  targetIso: string;               // e.g., "2025-11-01T00:00:00-05:00"
+  targetIso: string;               // e.g., "2025-12-01T00:00:00-05:00"
   showSecondsAfterTarget?: boolean // default true (keeps :ss visible after the date)
   clampAtZero?: boolean;           // default true (stop at 0 after target)
   className?: string;

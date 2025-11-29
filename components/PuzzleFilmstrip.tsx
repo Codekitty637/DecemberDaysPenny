@@ -23,7 +23,7 @@ type Props = {
   onMilestone?: (p: { completedCount: number; justCompletedId: string }) => void;
   onProgressChange?: (completedCount: number) => void;
   tileVisibility?: TileVisibility; // default 'unlocked'
-  /** whose progress to record on the server (defaults to 'keenan') */
+  /** whose progress to record on the server (defaults to 'Penny') */
   playerId?: string;
 };
 
@@ -35,7 +35,7 @@ type Progress = {
   acceptedAnswerById: Record<string, string | undefined>;
 };
 
-const STORAGE_KEY = 'kdays-progress';
+const STORAGE_KEY = 'PennyDays-progress';
 
 /** Robustly parse ?now=... (epoch ms, ISO, or common US/EU date forms) */
 function getNowOverrideFromQuery(): number | undefined {
@@ -89,7 +89,7 @@ export default function PuzzlesFilmstrip({
   onMilestone,
   onProgressChange,
   tileVisibility = 'unlocked',
-  playerId = 'keenan',
+  playerId = 'Penny',
 }: Props) {
   const [progress, setProgress] = useState<Progress>({
     completedIds: [],
