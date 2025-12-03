@@ -147,6 +147,11 @@ function PrelaunchCountdownBoxes({
 export default function Page() {
   const fsPuzzles = puzzlesData as FilmstripPuzzle[];
 
+  console.log(
+  'PENNY DEBUG – puzzles loaded:',
+  fsPuzzles.map((p, i) => `${i + 1}: ${p.id} · ${p.title}`)
+);
+
   // unified "now" (supports ?now=...)
   const [nowMs, setNowMs] = useState<number>(() => getNowMs());
   const [hasNowParam, setHasNowParam] = useState(false);
